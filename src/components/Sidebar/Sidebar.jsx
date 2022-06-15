@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { Divider, List, ListItem, ListItemText, ListItemIcon, Box, CircularProgress, ListSubheader } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useTheme } from '@mui/styles'
-import lightLogo from '../images/Light-Window-Watching-Logo.png'
-import darkLogo from '../images/Dark-Window-Watching-Logo.png'
+import lightLogo from '../../images/Light-Window-Watching-Logo.png'
+import darkLogo from '../../images/Dark-Window-Watching-Logo.png'
 
 import useStyles from './styles'
 
