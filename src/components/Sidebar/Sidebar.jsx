@@ -2,12 +2,15 @@ import React, { useEffect } from 'react'
 import { Divider, List, ListItem, ListItemText, ListItemIcon, Box, CircularProgress, ListSubheader } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useTheme } from '@mui/styles'
+import { useDispatch, useSelector } from 'react-redux'
 
 import lightLogo from '../../assets/images/Light-Window-Watching-Logo.png'
 import darkLogo from '../../assets/images/Dark-Window-Watching-Logo.png'
 import genreIcons from '../../assets/genres'
 
 import useStyles from './styles'
+
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory'
 import { useGetGenresQuery } from '../../services/TMDB'
 
 const categories = [
@@ -17,15 +20,19 @@ const categories = [
 ]
 
 const Sidebar = ({ setMobileOpen }) => {
+  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory)
   const theme = useTheme()
   const classes = useStyles()
   const { data, error, isFetching } = useGetGenresQuery()
 
-  // if (isFetching) return 'Loading...'
+  const dispatch = useDispatch() // transfer info from component to redux
 
-  if (error) return 'Error'
+  if (error) {
+    console.log(error)
+    return 'Error'
+  }
 
-  console.log({ data })
+  // console.log({ data })
 
   return (
     <>
@@ -41,9 +48,9 @@ const Sidebar = ({ setMobileOpen }) => {
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
-            <ListItem onClick={() => {}} button>
+            <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
               <ListItemIcon>
-                <img src={genreIcons[label.toLowerCase()]} clasName={classes.genreImages} height={30} />
+                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
               </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
@@ -61,9 +68,9 @@ const Sidebar = ({ setMobileOpen }) => {
           ) : (
             data.genres.map(({ name, id }) => (
               <Link key={name} className={classes.links} to="/">
-                <ListItem onClick={() => {}} button>
+                <ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button>
                   <ListItemIcon>
-                    <img src={genreIcons[name.toLowerCase()]} clasName={classes.genreImages} height={30} />
+                    <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
                   </ListItemIcon>
                   <ListItemText primary={name} />
                 </ListItem>
