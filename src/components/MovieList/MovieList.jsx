@@ -5,9 +5,9 @@ import { Movie } from '../index'
 
 import useStyles from './styles'
 
+// consider migrating movieList into movies (may be unnecessary component)
 const MovieList = ({ movies }) => {
   const classes = useStyles()
-  console.log('movie list')
 
   return (
     <Grid container className={classes.movieContainer}>
