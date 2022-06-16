@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
   toolbar: {
     height: '80px',
     display: 'flex',
+    'flex-flow': 'row wrap',
     justifyContent: 'space-between',
     marginLeft: '240px',
     [theme.breakpoints.down('sm')]: {

@@ -4,7 +4,7 @@ import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-materi
 import { Link } from 'react-router-dom'
 import { useTheme } from '@mui/material/styles'
 
-import { Sidebar } from '../index'
+import { Sidebar, Search } from '../index'
 
 import useStyles from './styles'
 
@@ -34,7 +34,7 @@ const NavBar = () => {
           <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
-          {!isMobile && 'Search...'}
+          {!isMobile && <Search />}
           <div>
             {!isAuthenticated ? (
               <Button color="inherit" onClick={() => {}}>
@@ -45,7 +45,7 @@ const NavBar = () => {
                 color="inherit"
                 component={Link}
                 to="/profile/:id"
-                className={classes.linkButton}
+                // className={classes.linkButton}
                 onClick={() => {}}
               >
                 {!isMobile && <>My Movies &nbsp;</>}
@@ -56,7 +56,7 @@ const NavBar = () => {
               </Button>
             )}
           </div>
-          {isMobile && 'Search...'}
+          {isMobile && <Search />}
         </Toolbar>
       </AppBar>
       <div>
