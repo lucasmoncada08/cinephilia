@@ -6,7 +6,6 @@ import { ExitToApp } from '@mui/icons-material'
 import { userSelector } from '../../features/auth'
 
 const Profile = () => {
-  // const accountId = localStorage.getItem('accountId')
   const { user } = useSelector(userSelector)
 
   const favouriteMovies = []

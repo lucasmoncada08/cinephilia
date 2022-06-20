@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const tmdbApiKey = process.env.REACT_APP_TMDB_KEY
-// https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
 const baseApiUrl = 'https://api.themoviedb.org/3'
 
 export const tmdbApi = createApi({
@@ -30,9 +29,24 @@ export const tmdbApi = createApi({
       },
     }),
 
+    // Get Movie by ID
+    getMovie: builder.query({
+      query: (id) => `movie/${id}?append_to_response=videos,credits&api_key=${tmdbApiKey}`,
+    }),
+
+    // Get Person by ID
+    getPerson: builder.query({
+      query: (id) => `person/${id}?api_key=${tmdbApiKey}`,
+    }),
+
     // Get Genres
     getGenres: builder.query({
       query: () => `genre/movie/list?api_key=${tmdbApiKey}`,
+    }),
+
+    // Get User Specific Lists
+    getRecommendations: builder.query({
+      query: ({ movieId, list }) => `movie/${movieId}/${list}?api_key=${tmdbApiKey}`,
     }),
   }),
 })
@@ -40,4 +54,7 @@ export const tmdbApi = createApi({
 export const {
   useGetGenresQuery,
   useGetMoviesQuery,
+  useGetMovieQuery,
+  useGetRecommendationsQuery,
+  useGetPersonQuery,
 } = tmdbApi
