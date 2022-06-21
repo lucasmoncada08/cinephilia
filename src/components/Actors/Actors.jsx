@@ -53,7 +53,7 @@ const Actors = () => {
           Born: {moment(data.birthday).format('MMM Do, YYYY')}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          {data?.biography || 'Sorry, no biography available yet.'}
+          {data?.biography?.length > 1250 ? data?.biography?.slice(0, 1250).concat('...') : data?.biography || 'Sorry, no biography available yet.'}
         </Typography>
         <Grid item container style={{ marginTop: '2rem' }}>
           <Grid item xs={12} sm={6} className={classes.buttonsContainer}>

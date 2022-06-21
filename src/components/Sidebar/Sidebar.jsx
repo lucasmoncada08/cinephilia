@@ -28,7 +28,6 @@ const Sidebar = ({ setMobileOpen }) => {
   const dispatch = useDispatch() // transfer info from component to redux
 
   if (error) {
-    console.log(error)
     return 'Error'
   }
 
@@ -50,7 +49,7 @@ const Sidebar = ({ setMobileOpen }) => {
           <Link key={value} className={classes.links} to="/">
             <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
               <ListItemIcon>
-                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
+                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImage} height={30} />
               </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
@@ -70,7 +69,7 @@ const Sidebar = ({ setMobileOpen }) => {
               <Link key={name} className={classes.links} to="/">
                 <ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button>
                   <ListItemIcon>
-                    <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
+                    <img src={genreIcons[name.toLowerCase()]} className={classes.genreImage} height={30} />
                   </ListItemIcon>
                   <ListItemText primary={name} />
                 </ListItem>
