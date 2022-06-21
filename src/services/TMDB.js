@@ -36,7 +36,7 @@ export const tmdbApi = createApi({
 
     // Get Person by ID
     getPerson: builder.query({
-      query: (id) => `person/${id}?api_key=${tmdbApiKey}`,
+      query: (id) => `person/${id}?append_to_response=movie_credits&api_key=${tmdbApiKey}`,
     }),
 
     // Get Genres

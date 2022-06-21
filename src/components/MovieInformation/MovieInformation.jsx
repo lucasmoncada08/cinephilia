@@ -78,7 +78,7 @@ const MovieInformation = () => {
             </Typography>
           </Box>
           <Typography variant="h6" align="center" gutterBottom>
-            {data?.runtime}mins / {data?.spoken_languages.length > 0 ? data?.spoken_languages[0].english_name : ''}
+            {data?.runtime}mins | {data?.spoken_languages.length > 0 ? data?.spoken_languages[0].english_name : ''}
           </Typography>
         </Grid>
         <Grid item className={classes.genresContainer}>
@@ -130,7 +130,7 @@ const MovieInformation = () => {
         <Grid item container style={{ marginTop: '2rem' }}>
           <div className={classes.buttonsContainer}>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size="small" variant="outlined">
+              <ButtonGroup size="medium" variant="outlined">
                 <Button target="_blank" rel="noopener noreferrer" href={data?.homepage} endIcon={<Language />}>Wesbite</Button>
                 <Button target="_blank" rel="noopener noreferrer" href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<Theaters />}>IMDB</Button>
                 <Button target="_blank" rel="noopener noreferrer" href={`https://www.rottentomatoes.com/m/${data.original_title.toLowerCase().split(' ').join('_')}`} endIcon={<MovieIcon />}>RT</Button>
@@ -159,8 +159,8 @@ const MovieInformation = () => {
         <Typography variant="h3" gutterBottom align="center">
           You might also like
         </Typography>
-        {recommendations
-          ? <MovieList movies={recommendations} numberOfMovies={12} />
+        {recommendations?.results
+          ? <MovieList movies={recommendations.results} numberOfMovies={12} />
           : <Box>Sorry, nothing was found here.</Box>}
       </Box>
       <Modal
