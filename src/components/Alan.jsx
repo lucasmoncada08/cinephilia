@@ -16,7 +16,6 @@ const useAlan = () => {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
       onCommand: (commands) => {
-        console.log({ commands })
         if (commands.command === 'changeMode') {
           if (commands.mode === 'light') {
             setMode('light')

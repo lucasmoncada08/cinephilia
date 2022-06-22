@@ -11,9 +11,6 @@ import useStyles from './styles'
 const Actors = () => {
   const { id } = useParams()
   const { data, isFetching, error } = useGetPersonQuery(id)
-  const page = 1
-
-  console.log({ data })
 
   const classes = useStyles()
 

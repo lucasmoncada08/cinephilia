@@ -32,9 +32,6 @@ const MovieInformation = () => {
   const getCastDict = { Production: 1, Sound: 1, Directing: 2, Writing: 2 }
   const crewGotten = {}
 
-  // console.log(data)
-  // console.log(recommendations)
-
   const classes = useStyles()
 
   useEffect(() => {

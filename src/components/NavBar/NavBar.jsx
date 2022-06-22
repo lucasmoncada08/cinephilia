@@ -45,8 +45,6 @@ const NavBar = () => {
     logInUser()
   }, [token])
 
-  console.log({ user })
-
   return (
     <>
       <AppBar position="fixed">
