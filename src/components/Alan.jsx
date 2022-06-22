@@ -16,6 +16,7 @@ const useAlan = () => {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
       onCommand: (commands) => {
+        console.log({ commands })
         if (commands.command === 'changeMode') {
           if (commands.mode === 'light') {
             setMode('light')
@@ -36,6 +37,8 @@ const useAlan = () => {
             const category = commands.genreOrCategory.startsWith('top') ? 'top_rated' : commands.genreOrCategory
             dispatch(selectGenreOrCategory(category))
           }
+        } else if (commands.command === 'search') {
+          dispatch(searchMovie(commands.query))
         }
       },
     })
