@@ -27,11 +27,13 @@ const Sidebar = ({ setMobileOpen }) => {
 
   const dispatch = useDispatch() // transfer info from component to redux
 
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [genreIdOrCategoryName])
+
   if (error) {
     return 'Error'
   }
-
-  // console.log({ data })
 
   return (
     <>
