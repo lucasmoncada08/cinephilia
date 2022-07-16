@@ -1,6 +1,6 @@
 # Window Watching Movie Browsing Application
 
-[website](https://windowwatching.netlify.app)
+[Use App](https://windowwatching.netlify.app)
 
 ## Description
 
